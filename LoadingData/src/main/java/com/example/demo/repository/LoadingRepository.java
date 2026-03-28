@@ -5,8 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.MathOperation;
 
-
 @Repository
-public interface LoadingRepository extends JpaRepository<MathOperation,String> {
+public interface LoadingRepository extends JpaRepository<MathOperation, String> {
 
 }

@@ -1,0 +1,38 @@
+---
+applications:
+- name: ETL-using-Spring-Boot-and-Apache-Kafka-modernized-ExtractingData
+  memory: 1G
+  instances: 1
+  buildpacks:
+    - java_buildpack
+  path: ExtractingData/target/*.jar
+  env:
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 21.+ } }'
+    SPRING_PROFILES_ACTIVE: cloud
+  services:
+    - modernized-rabbitmq
+
+- name: ETL-using-Spring-Boot-and-Apache-Kafka-modernized-LoadingData
+  memory: 1G
+  instances: 1
+  buildpacks:
+    - java_buildpack
+  path: LoadingData/target/*.jar
+  env:
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 21.+ } }'
+    SPRING_PROFILES_ACTIVE: cloud
+  services:
+    - modernized-rabbitmq
+
+- name: ETL-using-Spring-Boot-and-Apache-Kafka-modernized-TransformingData
+  memory: 1G
+  instances: 1
+  buildpacks:
+    - java_buildpack
+  path: TransformingData/target/*.jar
+  env:
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 21.+ } }'
+    SPRING_PROFILES_ACTIVE: cloud
+  services:
+    - modernized-rabbitmq
+
